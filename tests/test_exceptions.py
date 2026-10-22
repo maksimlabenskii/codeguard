@@ -1,4 +1,5 @@
 import ast
+import textwrap
 
 from codeguard.rules.exceptions_rules import (
     check_empty_except,
@@ -7,14 +8,14 @@ from codeguard.rules.exceptions_rules import (
 )
 
 def parse_code(source_code):
-    return ast.parse(source_code)
+    return ast.parse(textwrap.dedent(source_code))
 
 def test_empty_except():
     tree = parse_code("""
-try:
-    operation()
-except Exception:
-    pass
+        try:
+            operation()
+        except Exception:
+            pass
 """)
 
     issues = check_empty_except(tree)
@@ -24,10 +25,10 @@ except Exception:
 
 def test_broad_except():
     tree = parse_code("""
-try:
-    operation()
-except Exception:
-    print("Error")
+        try:
+            operation()
+        except Exception:
+            print("Error")
 """)
 
     issues = check_broad_except(tree)
@@ -37,10 +38,10 @@ except Exception:
 
 def test_missing_raise():
     tree = parse_code("""
-try:
-    operation()
-except ValueError:
-    print("Error")
+        try:
+            operation()
+        except ValueError:
+            print("Error")
 """)
 
     issues = check_missing_raise(tree)
