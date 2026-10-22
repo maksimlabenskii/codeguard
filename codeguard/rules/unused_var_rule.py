@@ -44,7 +44,7 @@ class ScopeVisitor(ast.NodeVisitor):
             self.issues.append({
                 "line": lineno,
                 "rule": "03_UNUSED_VAR",
-                "message": "",
+                "message": f"{name}",
             })
 
     def visit_Name(self, node):
