@@ -2,7 +2,7 @@ import ast
 
 LOOP_NODES = {ast.For, ast.While, ast.AsyncFor}
 
-class LoopChecker(ast.NodeTransformer):
+class LoopChecker(ast.NodeVisitor):
     def __init__(self):
         self.issues = []
         self.current_depth = 0
@@ -17,9 +17,9 @@ class LoopChecker(ast.NodeTransformer):
                 "message": ""
             })
 
-            self.generic_visit(node)
+        self.generic_visit(node)
 
-            self.current_depth -= 1
+        self.current_depth -= 1
 
     def visit_For(self, node):
         self._visit_loop(node)
