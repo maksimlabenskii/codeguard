@@ -19,7 +19,7 @@ def check_naming_convention(tree):
             if not _is_pascal_case(node.name):
                 issues.append({
                     "line": node.lineno,
-                    "rule": "04_CLASS_NAMING",
+                    "rule": "05_CLASS_NAMING",
                     "message": f"Класс '{node.name}' должен быть в PascalCase"
                 })
 
@@ -27,7 +27,7 @@ def check_naming_convention(tree):
             if not _is_snake_case(node.name):
                 issues.append({
                     "line": node.lineno,
-                    "rule": "04_FUNC_NAMING",
+                    "rule": "05_FUNC_NAMING",
                     "message": f"Функция '{node.name}' должна быть в snake_case"
                 })
 
@@ -35,7 +35,7 @@ def check_naming_convention(tree):
             if not _is_snake_case(node.id):
                 issues.append({
                     "line": node.lineno,
-                    "rule": "04_VAR_NAMING",
+                    "rule": "05_VAR_NAMING",
                     "message": f"Переменная '{node.id}' должна быть в snake_case"
                 })
 
@@ -43,7 +43,7 @@ def check_naming_convention(tree):
             if not _is_snake_case(node.arg):
                 issues.append({
                     "line": node.lineno,
-                    "rule": "04_ARG_NAMING",
+                    "rule": "05_ARG_NAMING",
                     "message": f"Аргумент '{node.arg}' должен быть в snake_case"
                 })
 
