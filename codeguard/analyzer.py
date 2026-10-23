@@ -6,6 +6,7 @@ from codeguard.rules.exceptions_rules import (
 )
 from codeguard.rules.many_cycles_rule import check_loops
 from codeguard.rules.arguments_rule import check_many_arguments
+from codeguard.rules.naming_rule import check_naming_convention
 from codeguard.rules.unused_var_rule import check_unused_var
 
 def analyze_file(file_path):
@@ -29,6 +30,7 @@ def analyze_file(file_path):
         check_empty_except,
         check_loops,
         check_many_arguments,
+        check_naming_convention,
         check_unused_var,
     ]
 
